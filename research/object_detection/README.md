@@ -263,7 +263,7 @@ then, train the model from directory of "/object_detection/models/research":
 ```python3 object_detection/model_main_tf2.py --pipeline_config_path=${PIPELINE_CONFIG_PATH} --model_dir=${MODEL_DIR} --alsologtostderr
 ```
 
-### Convert to tflite
+## Convert to tflite
 Convert the trained ckpt-num* checkpoints of the trained model into tf-friendly checkpoint files from "/object_detection/models/research" dir using:
 
 * Note: in $checkpoint dir there should exist 3 files of ckpt-num.index and ckpt-num.data-00000-of-00001 as well as checkpoint file which is a text file and the name of ckpt files are written in *
@@ -279,4 +279,8 @@ Convert the saved checkpoint to tflite model
 tflite_convert --saved_model_dir=$checkpoint/saved_model --output_file=$checkpoint/saved_model/model.tflite
 ```
 
+## Inference
+For inference from tf model, use inference.py and for inference from tflite model, use inference_tflite.py
 
+# Install
+For Installation pleas refer to "object_detection/g3doc/tf2.md" even with current dockerfile
