@@ -2,19 +2,19 @@ import tensorflow as tf
 
 test_images_dir = input("Enter path of test images in jpg format\n") or "/object_detection/out/Iran_plate_detection/test/"
 
-saved_model_dir = input("Enter path of checkpoint save_model") or "/object_detection/models/research/object_detection/checkpoints/tflite/saved_model/"
+saved_model_dir = input("Enter path of checkpoint save_model\n") or "/object_detection/models/research/object_detection/checkpoint/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/saved_model/"
 
-model_prefix = input("Enter path and prefix name for saving the **_quantf.tflite model") or "mobilenet_v2_1.0_coco"
+model_prefix = input("Enter path and prefix name for saving the **_quantf.tflite model\n") or "mobilenet_v2_1.0_coco"
 
-IMAGE_SIZE = input("Input Image size") or 320
+IMAGE_SIZE = input("Input Image size\n") or 320
 
 def representative_data_gen():
-  dataset_list = tf.data.Dataset.list_files( + '*.jpg')
+  dataset_list = tf.data.Dataset.list_files(test_images_dir + '*.jpg')
   for i in range(100):
     image = next(iter(dataset_list))
     image = tf.io.read_file(image)
     image = tf.io.decode_jpeg(image, channels=3)
-    image = tf.image.resize(image, [320, 320])
+    image = tf.image.resize(image, [IMAGE_SIZE, IMAGE_SIZE])
     image = tf.cast(image / 127.5 - 1, tf.float32)
     image = tf.expand_dims(image, 0)
     yield [image]

@@ -280,14 +280,26 @@ tflite_convert --saved_model_dir=$checkpoint/saved_model --output_file=$checkpoi
 ```
 
 Convert the saved checkpoint to fully quantized model (uint8 in/out)
-'''
+```
 python3 convert_quantizetflite.py
-''''
+```
 
 Convert the saved checkpoint to fully quantized model for Axis (uint8 input, float32 output)
-'''
+```
 python3 convert_quantizeAxis.py
-''''
+```
+
+## Load and Inference tflite model
+Inference our fully quantized uint8 input/output model.
+```
+python3 inference_tflite_8uint_ours.py
+```
+
+But for inference on a pre-trained and quantized model (not ours) refer to `inference_tflite_8uint.py`
+
+If the fully quantized model is generated for Axis, follow `inference_tflite_axis_ours.py`.
+
+Print contents of tflite model using "tflite_content.py"
 
 ## Inference
 For inference from tf model, use inference.py and for inference from tflite model, use inference_tflite.py
