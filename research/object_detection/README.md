@@ -305,4 +305,6 @@ Print contents of tflite model using "tflite_content.py"
 For inference from tf model, use inference.py and for inference from tflite model, use inference_tflite.py
 
 # Install
-For Installation pleas refer to "object_detection/g3doc/tf2.md" even with current dockerfile
+For Installation pleas refer to "object_detection/g3doc/tf2.md" even with current dockerfile.
+
+Docker can be run using `docker run --runtime nvidia -v $PWD/object_detection:/object_detection --name tf -it tensorflow/tensorflow:tutorial bash`
